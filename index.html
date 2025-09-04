@@ -271,6 +271,7 @@
         .service-image {
             height: 200px;
             overflow: hidden;
+            position: relative;
         }
         
         .service-image img {
@@ -305,50 +306,95 @@
             font-size: 1.2rem;
         }
         
-        /* Testimonials */
-        .testimonials-container {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        .testimonial {
-            text-align: center;
-            padding: 30px;
-            background-color: var(--light-color);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin: 20px;
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-            position: relative;
-        }
-        
-        .testimonial-text:before,
-        .testimonial-text:after {
-            content: '"';
-            font-size: 3rem;
-            color: var(--accent-color);
-            opacity: 0.3;
+        /* Certificate Badge */
+        .certificate-badge {
             position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
         }
         
-        .testimonial-text:before {
-            top: -20px;
-            left: -10px;
+        /* Face Massage Section */
+        .face-massage {
+            background: linear-gradient(to bottom, #f9f7f2, #f1ebe1);
         }
         
-        .testimonial-text:after {
-            bottom: -40px;
-            right: -10px;
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
         }
         
-        .testimonial-author {
-            font-weight: 600;
+        .pricing-table thead {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .pricing-table th, .pricing-table td {
+            padding: 15px 20px;
+            text-align: left;
+        }
+        
+        .pricing-table th {
+            font-weight: 500;
+        }
+        
+        .pricing-table tbody tr {
+            border-bottom: 1px solid #eee;
+            transition: var(--transition);
+        }
+        
+        .pricing-table tbody tr:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-table tbody tr:hover {
+            background-color: rgba(212, 175, 122, 0.1);
+        }
+        
+        .pricing-table .service-name {
+            font-weight: 500;
             color: var(--primary-color);
+        }
+        
+        .pricing-table .service-duration {
+            color: #777;
+        }
+        
+        .pricing-table .service-price {
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+        
+        .service-details {
+            margin-top: 50px;
+        }
+        
+        .detail-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .detail-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .detail-card p {
+            line-height: 1.8;
+            color: #555;
         }
         
         /* Contact Section */
@@ -498,6 +544,10 @@
             .about-image {
                 margin-top: 30px;
             }
+            
+            .pricing-table {
+                font-size: 0.9rem;
+            }
         }
         
         @media (max-width: 768px) {
@@ -506,390 +556,460 @@
             }
             
             nav ul {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background-color: var(--light-color);
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                transition: var(--transition);
-            }
-            
-            nav ul.active {
-                left: 0;
-            }
-            
-            nav ul li {
-                margin: 15px 0;
-            }
-            
-            .hero h2 {
-                font-size: 2.3rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .btn {
-                display: block;
-                margin: 10px auto;
-                width: 200px;
-            }
-            
-            .btn-outline {
-                margin-left: 0;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            
-            .contact-info, .contact-form {
-                flex: 100%;
-                padding-right: 0;
-            }
-            
-            .contact-form {
-                margin-top: 30px;
-            }
+            position: fixed;
+            top: 80px;
+            left: -100%;
+            width: 100%;
+            height: calc(100vh - 80px);
+            background-color: var(--light-color);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
         }
         
-        @media (max-width: 480px) {
-            .hero h2 {
-                font-size: 2rem;
-            }
-            
-            .service-card {
-                min-width: 100%;
-            }
+        nav ul.active {
+            left: 0;
         }
-    </style>
+        
+        nav ul li {
+            margin: 15px 0;
+        }
+        
+        .hero h2 {
+            font-size: 2.3rem;
+        }
+        
+        .hero p {
+            font-size: 1rem;
+        }
+        
+        .btn {
+            display: block;
+            margin: 10px auto;
+            width: 200px;
+        }
+        
+        .btn-outline {
+            margin-left: 0;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+        }
+        
+        .contact-info, .contact-form {
+            flex: 100%;
+            padding-right: 0;
+        }
+        
+        .contact-form {
+            margin-top: 30px;
+        }
+        
+        .pricing-table {
+            display: block;
+            overflow-x: auto;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .hero h2 {
+            font-size: 2rem;
+        }
+        
+        .service-card {
+            min-width: 100%;
+        }
+        
+        .pricing-table th, .pricing-table td {
+            padding: 10px 15px;
+        }
+    }
+</style>
 </head>
 <body>
-    <!-- Header -->
-    <header id="header">
-        <div class="container header-container">
-            <div class="logo">
-                <i class="fas fa-spa logo-icon"></i>
-                <h1>Golden Lotus</h1>
-            </div>
-            <button class="nav-btn" id="navToggle">
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav>
-                <ul id="navMenu">
-                    <li><a href="#home">Главная</a></li>
-                    <li><a href="#about">О нас</a></li>
-                    <li><a href="#services">Услуги</a></li>
-                    <li><a href="#testimonials">Отзывы</a></li>
-                    <li><a href="#contact">Контакты</a></li>
-                </ul>
-            </nav>
+<!-- Header -->
+<header id="header">
+    <div class="container header-container">
+        <div class="logo">
+            <i class="fas fa-spa logo-icon"></i>
+            <h1>Golden Lotus</h1>
         </div>
-    </header>
+        <button class="nav-btn" id="navToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav>
+            <ul id="navMenu">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#face-massage">Массаж лица</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h2>Искусство расслабления и гармонии</h2>
-            <p>Погрузитесь в мир релаксации и восстановления сил в нашем массажном кабинете премиум-класса</p>
-            <a href="#contact" class="btn">Записаться онлайн</a>
-            <a href="#services" class="btn btn-outline">Наши услуги</a>
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h2>Искусство расслабления и гармонии</h2>
+        <p>Погрузитесь в мир релаксации и восстановления сил в нашем массажном кабинете премиум-класса</p>
+        <a href="#contact" class="btn">Записаться онлайн</a>
+        <a href="#services" class="btn btn-outline">Наши услуги</a>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="section" id="about">
+    <div class="container">
+        <div class="section-title">
+            <h2>О Golden Lotus</h2>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="section" id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>О Golden Lotus</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Добро пожаловать в оазис спокойствия</h3>
+                <p>Массажный кабинет Golden Lotus — это место, где современные методики массажа сочетаются с древними традициями восточных практик. Мы создали пространство, где каждый гость может отвлечься от городской суеты и погрузиться в атмосферу полного расслабления.</p>
+                <p>Наши специалисты — дипломированные мастера с многолетним опытом, которые подберут индивидуальный подход и технику массажа именно для ваших потребностей.</p>
+                <p>Мы используем только натуральные масла и экологичные продукты премиум-качества для достижения максимального эффекта от процедур.</p>
             </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Добро пожаловать в оазис спокойствия</h3>
-                    <p>Массажный кабинет Golden Lotus — это место, где современные методики массажа сочетаются с древними традициями восточных практик. Мы создали пространство, где каждый гость может отвлечься от городской суеты и погрузиться в атмосферу полного расслабления.</p>
-                    <p>Наши специалисты — дипломированные мастера с многолетним опытом, которые подберут индивидуальный подход и технику массажа именно для ваших потребностей.</p>
-                    <p>Мы используем только натуральные масла и экологичные продукты премиум-качества для достижения максимального эффекта от процедур.</p>
-                </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1560090995-0166e73f4e88?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Интерьер массажного кабинета Golden Lotus">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="section services" id="services">
-        <div class="container">
-            <div class="section-title">
-                <h2>Наши услуги</h2>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Тайский массаж">
-                    </div>
-                    <div class="service-content">
-                        <h3>Тайский массаж</h3>
-                        <p>Древняя техника, сочетающая точечное воздействие и растяжку. Снимает мышечное напряжение, улучшает гибкость и циркуляцию энергии.</p>
-                        <p class="service-price">от 3 500 руб.</p>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Ароматерапия">
-                    </div>
-                    <div class="service-content">
-                        <h3>Ароматерапевтический массаж</h3>
-                        <p>Расслабляющий массаж с использованием эфирных масел, подобранных индивидуально для решения ваших задач: снятие стресса, тонизирование или глубокое расслабление.</p>
-                        <p class="service-price">от 3 000 руб.</p>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1507207611509-ecb9ca7b98e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Хот стоун массаж">
-                    </div>
-                    <div class="service-content">
-                        <h3>Хот стоун массаж</h3>
-                        <p>Глубокое прогревание мышцев горячими камнями вулканической породы снимает напряжение, успокаивает нервную систему и улучшает обмен веществ.</p>
-                        <p class="service-price">от 4 000 руб.</p>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1519458349-18cddc9ef5ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Антицеллюлитный массаж">
-                    </div>
-                    <div class="service-content">
-                        <h3>Антицеллюлитный массаж</h3>
-                        <p>Интенсивное воздействие на проблемные зоны улучшает микроциркуляцию, способствует расщеплению жировых отложений и выведению токсинов.</p>
-                        <p class="service-price">от 3 200 руб.</p>
-                    </div>
-                </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1560090995-0166e73f4e88?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Интерьер массажного кабинета Golden Lotus">
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Testimonials Section -->
-    <section class="section" id="testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2>Отзывы клиентов</h2>
-            </div>
-            <div class="testimonials-container">
-                <div class="testimonial">
-                    <div class="testimonial-text">
-                        <p>Посещаю Golden Lotus уже более года. Это мое место силы и восстановления. После сеанса тайского массажа чувствую себя обновленной и полной энергии. Мастера — настоящие профессионалы!</p>
-                    </div>
-                    <div class="testimonial-author">Елена, постоянный клиент</div>
-                </div>
-                
-                <div class="testimonial">
-                    <div class="testimonial-text">
-                        <p>Подарил жене сертификат на массаж в Golden Lotus. Она была в восторге! Теперь и сам периодически посещаю — отличное место, чтобы снять напряжение после рабочей недели.</p>
-                    </div>
-                    <div class="testimonial-author">Андрей, клиент</div>
-                </div>
-                
-                <div class="testimonial">
-                    <div class="testimonial-text">
-                        <p>Перепробовала много массажных салонов в городе, но Golden Lotus — это что-то особенное. Атмосфера, внимание к деталям и профессиональный подход. Рекомендую всем!</p>
-                    </div>
-                    <div class="testimonial-author">Ольга, клиент</div>
-                </div>
-            </div>
+<!-- Services Section -->
+<section class="section services" id="services">
+    <div class="container">
+        <div class="section-title">
+            <h2>Наши услуги</h2>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="section contact" id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Контакты</h2>
-            </div>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-info-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div>
-                            <h3>Адрес</h3>
-                            <p>ул. Спокойствия, 25, Москва</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-info-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div>
-                            <h3>Часы работы</h3>
-                            <p>Пн-Пт: 10:00 - 22:00</p>
-                            <p>Сб-Вс: 11:00 - 20:00</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-info-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div>
-                            <h3>Телефон</h3>
-                            <p>+7 (495) 123-45-67</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-info-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h3>Email</h3>
-                            <p>info@golden-lotus.ru</p>
-                        </div>
-                    </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Тайский массаж">
+                    <div class="certificate-badge">Рекомендуем</div>
                 </div>
-                
-                <div class="contact-form">
-                    <form id="appointmentForm">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Ваше имя" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" class="form-control" placeholder="Ваш телефон" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Ваш email">
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control" required>
-                                <option value="" disabled selected>Выберите услугу</option>
-                                <option value="thai">Тайский массаж</option>
-                                <option value="aroma">Ароматерапевтический массаж</option>
-                                <option value="hot-stone">Хот стоун массаж</option>
-                                <option value="anti-cellulite">Антицеллюлитный массаж</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" placeholder="Ваши пожелания"></textarea>
-                        </div>
-                        <button type="submit" class="btn">Записаться</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container footer-container">
-            <div class="footer-col">
-                <h3>Golden Lotus</h3>
-                <p>Массажный кабинет премиум-класса, где современные методики сочетаются с древними практиками востока.</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-vk"></i></a>
-                    <a href="#"><i class="fab fa-telegram"></i></a>
+                <div class="service-content">
+                    <h3>Тайский массаж</h3>
+                    <p>Древняя техника, сочетающая точечное воздействие и растяжку. Снимает мышечное напряжение, улучшает гибкость и циркуляцию энергии.</p>
+                    <p class="service-price">от 3 500 руб.</p>
                 </div>
             </div>
             
-            <div class="footer-col">
-                <h3>Услуги</h3>
-                <ul>
-                    <li><a href="#">Тайский массаж</a></li>
-                    <li><a href="#">Ароматерапия</a></li>
-                    <li><a href="#">Хот стоун массаж</a></li>
-                    <li><a href="#">Антицеллюлитный массаж</a></li>
-                    <li><a href="#">Подарочные сертификаты</a></li>
-                </ul>
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Ароматерапия">
+                    <div class="certificate-badge">Рекомендуем</div>
+                </div>
+                <div class="service-content">
+                    <h3>Ароматерапевтический массаж</h3>
+                    <p>Расслабляющий массаж с использованием эфирных масел, подобранных индивидуально для решения ваших задач: снятие стресса, тонизирование или глубокое расслабление.</p>
+                    <p class="service-price">от 3 000 руб.</p>
+                </div>
             </div>
             
-            <div class="footer-col">
-                <h3>Часы работы</h3>
-                <p>Понедельник - Пятница: 10:00 - 22:00</p>
-                <p>Суббота - Воскресенье: 11:00 - 20:00</p>
-                <p>Последний понедельник месяца — санитарный день</p>
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1507207611509-ecb9ca7b98e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Хот стоун массаж">
+                    <div class="certificate-badge">Рекомендуем</div>
+                </div>
+                <div class="service-content">
+                    <h3>Хот стоун массаж</h3>
+                    <p>Глубокое прогревание мышцев горячими камнями вулканической породы снимает напряжение, успокаивает нервную систему и улучшает обмен веществ.</p>
+                    <p class="service-price">от 4 000 руб.</p>
+                </div>
             </div>
             
-            <div class="footer-col">
-                <h3>Контакты</h3>
-                <p><i class="fas fa-map-marker-alt"></i> ул. Спокойствия, 25, Москва</p>
-                <p><i class="fas fa-phone"></i> +7 (495) 123-45-67</p>
-                <p><i class="fas fa-envelope"></i> info@golden-lotus.ru</p>
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="C2.jpg" alt="Антицеллюлитный массаж">
+                    <div class="certificate-badge">Рекомендуем</div>
+                </div>
+                <div class="service-content">
+                    <h3>Антицеллюлитный массаж</h3>
+                    <p>Интенсивное воздействие на проблемные зоны улучшает микроциркуляцию, способствует расщеплению жировых отложений и выведению токсинов.</p>
+                    <p class="service-price">от 3 200 руб.</p>
+                </div>
+            </div>
+            
+            <!-- Новая карточка для массажа лица -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="L2.jpg" alt="Массаж лица">
+                    <div class="certificate-badge">Рекомендуем</div>
+                </div>
+                <div class="service-content">
+                    <h3>Массаж лица</h3>
+                    <p>Профессиональный массаж лица для улучшения тонуса кожи, разглаживания морщин и улучшения цвета лица. Включает различные техники для достижения максимального эффекта.</p>
+                    <p class="service-price">от 1 600 руб.</p>
+                </div>
             </div>
         </div>
-        
-        <div class="container">
-            <div class="copyright">
-                <p>&copy; 2023 Golden Lotus. Все права защищены.</p>
-            </div>
-        </div>
-    </footer>
+    </div>
+</section>
 
-    <script>
-        // Navigation toggle
-        const navToggle = document.getElementById('navToggle');
-        const navMenu = document.getElementById('navMenu');
+<!-- Face Massage Section -->
+<section class="section face-massage" id="face-massage">
+    <div class="container">
+        <div class="section-title">
+            <h2>Массаж лица</h2>
+        </div>
         
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            navToggle.innerHTML = navMenu.classList.contains('active') ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-        });
+        <table class="pricing-table">
+            <thead>
+                <tr>
+                    <th>Услуга</th>
+                    <th>Длительность</th>
+                    <th>Стоимость</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="service-name">Классический массаж лица</td>
+                    <td class="service-duration">40 мин</td>
+                    <td class="service-price">1 600 руб.</td>
+                </tr>
+                <tr>
+                    <td class="service-name">Массаж + альгинатная маска</td>
+                    <td class="service-duration">60 мин</td>
+                    <td class="service-price">2 000 руб.</td>
+                </tr>
+                <tr>
+                    <td class="service-name">Скульптурный массаж лица</td>
+                    <td class="service-duration">45 мин</td>
+                    <td class="service-price">2 000 руб.</td>
+                </tr>
+                <tr>
+                    <td class="service-name">Хиропластический массаж лица</td>
+                    <td class="service-duration">60 мин</td>
+                    <td class="service-price">2 500 руб.</td>
+                </tr>
+                <tr>
+                    <td class="service-name">Альгинатная маска по типу кожи</td>
+                    <td class="service-duration">20 мин</td>
+                    <td class="service-price">500 руб.</td>
+                </tr>
+            </tbody>
+        </table>
         
-        // Header scroll effect
-        const header = document.getElementById('header');
+        <div class="service-details">
+            <div class="detail-card">
+                <h3>Классический массаж лица</h3>
+                <p>Работает в нескольких направлениях: устраняет дряблость кожи, выравнивает цвет лица, улучшает микроциркуляцию крови. Идеально подходит для регулярного ухода и поддержания тонуса кожи.</p>
+            </div>
+            
+            <div class="detail-card">
+                <h3>Скульптурный массаж лица</h3>
+                <p>Это глубокотканный массаж. Дает заметный эффект подтяжки, поднимает уголки губ и глаз. Повышает тонус кожи. Рекомендуется курсом из 5-10 процедур для достижения максимального результата.</p>
+            </div>
+            
+            <div class="detail-card">
+                <h3>Хиропластический массаж лица</h3>
+                <p>Моделирует контуры лица, подтягивает овал лица. Дает лимфодренажный эффект, выводит токсины и устраняет отечность. Показаниями к курсу процедур могут являться сухость кожи, потеря упругости, морщины, нечеткий контур овала лица.</p>
+            </div>
+            
+            <div class="detail-card">
+                <h3>Альгинатная маска</h3>
+                <p>Освобождает кожу от токсинов. Возвращает лицу свежий вид. Подтягивает контур лица. Разглаживает мелкие морщины. Лицо после этой маски начинает светиться изнутри. Рекомендуется после любого массажа лица для закрепления результата.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="section contact" id="contact">
+    <div class="container">
+        <div class="section-title">
+            <h2>Контакты</h2>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-info-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <h3>Адрес</h3>
+                        <p>г. Иркутск, ул. Лермонтова, 136/4</p>
+                        <p>остановка МНТК</p>
+                    </div>
+                </div>
+                
+                <div class="contact-info-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div>
+                        <h3>Часы работы</h3>
+                        <p>По предварительной записи</p>
+                        <p>Ежедневно с 10:00 - 22:00</p>
+                    </div>
+                </div>
+                
+                <div class="contact-info-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div>
+                        <h3>Телефоны</h3>
+                        <p>+7 (904) 114-73-70</p>
+                        <p>+7 (950) 126-29-99</p>
+                    </div>
+                </div>
+                
+                <div class="contact-info-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h3>Email</h3>
+                        <p>38it@mail.ru</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form id="appointmentForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control" placeholder="Ваш телефон" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Ваш email">
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" required>
+                            <option value="" disabled selected>Выберите услугу</option>
+                            <option value="thai">Тайский массаж</option>
+                            <option value="aroma">Ароматерапевтический массаж</option>
+                            <option value="hot-stone">Хот стоун массаж</option>
+                            <option value="anti-cellulite">Антицеллюлитный массаж</option>
+                            <option value="face-classic">Классический массаж лица</option>
+                            <option value="face-sculpt">Скульптурный массаж лица</option>
+                            <option value="face-chiro">Хиропластический массаж лица</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="Ваши пожелания"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Записаться</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container footer-container">
+        <div class="footer-col">
+            <h3>Golden Lotus</h3>
+            <p>Массажный кабинет премиум-класса, где современные методики сочетаются с древними практиками востока.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-vk"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+            </div>
+        </div>
         
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
+        <div class="footer-col">
+            <h3>Услуги</h3>
+            <ul>
+                <li><a href="#">Тайский массаж</a></li>
+                <li><a href="#">Ароматерапия</a></li>
+                <li><a href="#">Хот стоун массаж</a></li>
+                <li><a href="#">Антицеллюлитный массаж</a></li>
+                <li><a href="#">Массаж лица</a></li>
+                <li><a href="#">Подарочные сертификаты</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-col">
+            <h3>Часы работы</h3>
+            <p>По предварительной записи</p>
+            <p>Ежедневно с 10:00 - 22:00</p>
+        </div>
+        
+        <div class="footer-col">
+            <h3>Контакты</h3>
+            <p><i class="fas fa-map-marker-alt"></i> г. Иркутск, ул. Лермонтова, 136/4</p>
+            <p>остановка МНТК</p>
+            <p><i class="fas fa-phone"></i> +7 (904) 114-73-70</p>
+            <p><i class="fas fa-phone"></i> +7 (950) 126-29-99</p>
+            <p><i class="fas fa-envelope"></i> 38it@mail.ru</p>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="copyright">
+            <p>&copy; 2025 Golden Lotus. Все права защищены.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Navigation toggle
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        navToggle.innerHTML = navMenu.classList.contains('active') ? 
+            '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Header scroll effect
+    const header = document.getElementById('header');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                }
             }
         });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if (navMenu.classList.contains('active')) {
-                        navMenu.classList.remove('active');
-                        navToggle.innerHTML = '<i class="fas fa-bars"></i>';
-                    }
-                }
-            });
+    });
+    
+    // Form submission
+    const appointmentForm = document.getElementById('appointmentForm');
+    
+    if (appointmentForm) {
+        appointmentForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Спасибо за вашу заявку! Мы свяжемся с вами в ближайшее время для подтверждения записи.');
+            this.reset();
         });
-        
-        // Form submission
-        const appointmentForm = document.getElementById('appointmentForm');
-        
-        if (appointmentForm) {
-            appointmentForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Спасибо за вашу заявку! Мы свяжемся с вами в ближайшее время для подтверждения записи.');
-                this.reset();
-            });
-        }
-    </script>
+    }
+</script>
 </body>
 </html>
