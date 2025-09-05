@@ -402,7 +402,7 @@
         }
         
         .service-table .service-duration {
-            color: #777;
+            color: 777;
         }
         
         .service-table .service-price {
@@ -465,6 +465,26 @@
         textarea.form-control {
             min-height: 150px;
             resize: vertical;
+        }
+        
+        .form-message {
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+            text-align: center;
+        }
+        
+        .form-message.success {
+            background-color: #d4edda;
+            color: #155724;
+            display: block;
+        }
+        
+        .form-message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            display: block;
         }
         
         /* Footer */
@@ -693,7 +713,7 @@
             <div class="about-content">
                 <div class="about-text">
                     <h3>Добро пожаловать в оазис спокойствия</h3>
-                    <p>Массажный кабинет Golden Lotus — это место, где современные методики массажа сочетаются с древними традициями восточных практик. Мы создали пространство, где каждый гость может отвлечься от городской суеты и погрузиться в атмосферу полного расслабления.</p>
+                    <p>Массажный кабинет Golden Lotus — это место, где современные методики массажа сочетаются с древними традиции восточных практик. Мы создали пространство, где каждый гость может отвлечься от городской суеты и погрузиться в атмосферу полного расслабления.</p>
                     <p>Наши специалисты — дипломированные мастера с многолетним опытом, которые подберут индивидуальный подход и технику массажа именно для ваших потребностей.</p>
                     <p>Мы используем только натуральные масла и экологичные продукты премиум-качества для достижения максимального эффекта от процедур.</p>
                 </div>
@@ -717,7 +737,7 @@
                         <img src="N1.jpg" alt="Горбунова Юлия">
                     </div>
                     <div class="master-content">
-                        <h3>Горбунова Юлия</h3>
+                        <h3>КГорбунова Юлия</h3>
                         <span class="position">Старший массажист</span>
                         <p>Сертифицированный специалист с 5-летним опытом работы. Специализируется на омолаживающем массаже тела и ароматерапии.</p>
                         <div class="master-skills">
@@ -731,10 +751,10 @@
                 
                 <div class="master-card">
                     <div class="master-image">
-                        <img src="A2.jpg" alt="Корниенко Алина Алексеевна">
+                        <img src="A2.jpg" alt="Корниенко Алина">
                     </div>
                     <div class="master-content">
-                        <h3>Корниенко Алина Алексеевна</h3>
+                        <h3>Корниенко Алина</h3>
                         <span class="position">Эксперт по массажу лица</span>
                         <p>Эксперт в области массажа лица и эстетических процедур. Регулярно повышает квалификацию на семинарах.</p>
                         <div class="master-skills">
@@ -940,15 +960,16 @@
                 </div>
                 
                 <div class="contact-form">
-                    <form id="appointmentForm">
+                    <div id="form-message" class="form-message"></div>
+                    <form id="appointmentForm" action="https://formspree.io/f/xkgvppja" method="POST">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Ваше имя" required>
+                            <input type="text" class="form-control" name="name" placeholder="Ваше имя" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" class="form-control" placeholder="Ваш телефон" required>
+                            <input type="tel" class="form-control" name="phone" placeholder="Ваш телефон" required>
                         </div>
                         <div class="form-group">
-                            <select class="form-control" required>
+                            <select class="form-control" name="service" required>
                                 <option value="" disabled selected>Выберите услугу</option>
                                 <optgroup label="Массаж тела">
                                     <option value="classic">Классический массаж</option>
@@ -972,7 +993,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" placeholder="Ваши пожелания"></textarea>
+                            <textarea class="form-control" name="message" placeholder="Ваши пожелания"></textarea>
                         </div>
                         <button type="submit" class="btn">Записаться</button>
                     </form>
@@ -1008,7 +1029,6 @@
                 <h3>Часы работы</h3>
                 <p>По предварительной записи</p>
                 <p>Ежедневно с 10:00 - 22:00</p>
-                <p>Последний понедельник месяца — санитарный день</p>
             </div>
             
             <div class="footer-col">
@@ -1074,14 +1094,56 @@
             });
         });
         
-        // Form submission
+        // Form submission with Formspree
         const appointmentForm = document.getElementById('appointmentForm');
+        const formMessage = document.getElementById('form-message');
         
         if (appointmentForm) {
-            appointmentForm.addEventListener('submit', function(e) {
+            appointmentForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
-                alert('Спасибо за вашу заявку! Мы свяжемся с вами в ближайшее время для подтверждения записи.');
-                this.reset();
+                
+                const formData = new FormData(this);
+                const submitButton = this.querySelector('button[type="submit"]');
+                
+                // Show loading state
+                submitButton.disabled = true;
+                submitButton.textContent = 'Отправка...';
+                
+                try {
+                    const response = await fetch(this.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        // Show success message
+                        formMessage.textContent = 'Спасибо за вашу заявку! Мы свяжемся с вами в ближайшее время.';
+                        formMessage.classList.remove('error');
+                        formMessage.classList.add('success');
+                        
+                        // Reset form
+                        this.reset();
+                    } else {
+                        throw new Error('Ошибка при отправке формы');
+                    }
+                } catch (error) {
+                    // Show error message
+                    formMessage.textContent = 'Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз или свяжитесь с нами по телефону.';
+                    formMessage.classList.remove('success');
+                    formMessage.classList.add('error');
+                } finally {
+                    // Restore button state
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Записаться';
+                    
+                    // Hide message after 5 seconds
+                    setTimeout(() => {
+                        formMessage.classList.remove('success', 'error');
+                    }, 5000);
+                }
             });
         }
         
